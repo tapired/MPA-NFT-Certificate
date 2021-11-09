@@ -8,6 +8,7 @@ import {
   nftaddress
 } from '../config'
 
+
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 // const url =  webersgeneratedimage
 
@@ -38,11 +39,15 @@ async function mintmyNFT(url) {
        await transaction.wait()
 }
 
+
+
 return (
  <div>
   <button onClick={mintmyNFT} className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg">
         MINT YOUR NFT
       </button>
       </div>
+
+
 )
 }

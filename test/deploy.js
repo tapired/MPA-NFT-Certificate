@@ -14,6 +14,7 @@ describe("NFT", function() {
     expect(await nft.tokenURI(1)).to.equal(URI)
   });
 
+
   it("gets the count of NFTs for this address", async () => {
     const NFT = await ethers.getContractFactory("NFT");
     const nft = await NFT.deploy();
@@ -43,6 +44,16 @@ describe("NFT", function() {
     await expect(
     await nft.callStatic.mintNFT("0xC257274276a4E539741Ca11b590B9447B26A8051", URI)).to.eq("1");
     });
+
+  it("displays the minted NFTs", async() => {
+    const NFT = await ethers.getContractFactory("NFT");
+    const nft = await NFT.deploy();
+    const URI = "ipfs://QmXzV9oavNqk4uYNK1dHbDNCvYtW5hLpkZTHmCtswTBKpB";
+    await nft.deployed();
+    await expect(
+       nft.displayNFT()
+    );
+  });
 
 
 });
