@@ -72,4 +72,26 @@ contract NFT is ERC721URIStorage , ReentrancyGuard {
     return nfts;
   }
 
+ function displayMyNFTs() public view returns (NFTitem[] memory) {
+   uint totalItemCount = _itemIds.current();
+    uint itemCount = 0;
+    uint currentIndex = 0;
+
+    for (uint i = 0; i < totalItemCount; i++) {
+      if (idToNFTitem[i + 1].owner == msg.sender) {
+        itemCount += 1;
+      }
+    }
+
+    NFTitem[] memory nfts = new NFTitem[](itemCount);
+    for (uint i = 0; i < totalItemCount; i++) {
+      if (idToNFTitem[i + 1].owner == msg.sender) {
+        uint currentId = i + 1;
+        NFTitem storage currentItem = idToNFTitem[currentId];
+        nfts[currentIndex] = currentItem;
+        currentIndex += 1;
+      }
+    }
+    return nfts;
+ }
     }
